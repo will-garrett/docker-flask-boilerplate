@@ -3,11 +3,13 @@ services:
   web:
     image: webapp-flask
     build:
-      context: .
-      dockerfile: Dockerfile-flask
+      context: ./flask_app
+      dockerfile: Dockerfile
     volumes:
-      - "./:/code"
+      - "./flask_app:/code"
     ports:
       - "5000:5000"
   redis:
     image: redis
+    volumes:
+      - "./redis-data/:/data"
